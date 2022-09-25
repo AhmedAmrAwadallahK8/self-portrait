@@ -12,8 +12,19 @@ class Mouth implements FaceComponent{
   }
   
   void drawComponent(Face f){
+    drawMouth();
+    drawMouthSeperator();
+    
+    
+  }
+  
+  void drawMouth(){
     fill(193,75,75);
     ellipse(mouthX, mouthY, mouthWidth, mouthHeight);
     fill(255);
+  }
+  
+  void drawMouthSeperator(){
+    line(mouthX-mouthWidth/2, mouthY, mouthX+mouthWidth/2, mouthY);
   }
 }

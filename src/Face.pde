@@ -24,13 +24,13 @@ class Face{
     
     faceComponents.add(new JawOutline());
     
-    faceComponents.add(new VerticalGuideLine());
+    //faceComponents.add(new VerticalGuideLine());
     
-    faceComponents.add(new EyeGuideLine());
+    //faceComponents.add(new EyeGuideLine());
     
-    faceComponents.add(new MouthGuideLine());
+    //faceComponents.add(new MouthGuideLine());
     
-    faceComponents.add(new NoseGuideLine());
+    //faceComponents.add(new NoseGuideLine());
     
     faceComponents.add(new Eye("left"));
     faceComponents.add(new Eye("right"));
@@ -38,6 +38,8 @@ class Face{
     faceComponents.add(new Nose(this));
     
     faceComponents.add(new Mouth(this));
+    
+    faceComponents.add(new Hair(this));
     
   }
   
