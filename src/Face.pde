@@ -41,6 +41,10 @@ class Face{
     
     faceComponents.add(new Hair(this));
     
+    faceComponents.add(new Beard(this));
+    
+    faceComponents.add(new Moustache(this));
+    
   }
   
   void drawFace(){
