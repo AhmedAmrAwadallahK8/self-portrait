@@ -17,8 +17,7 @@ class Face{
   
     faceComponents = new ArrayList<FaceComponent>();
     
-    faceComponents.add(new Ear(this, "left"));
-    faceComponents.add(new Ear(this, "right"));
+    faceComponents.add(new Ear(this));
     
     faceComponents.add(new HeadOutline());
     
@@ -32,8 +31,7 @@ class Face{
     
     //faceComponents.add(new NoseGuideLine());
     
-    faceComponents.add(new Eye("left"));
-    faceComponents.add(new Eye("right"));
+    faceComponents.add(new Eye(this));
     
     faceComponents.add(new Nose(this));
     
@@ -49,6 +47,13 @@ class Face{
   
   void drawFace(){
     for(FaceComponent component: faceComponents){
+      component.drawComponent(this);
+    }
+  }
+  
+  void drawFaceSlow(){
+    for(FaceComponent component: faceComponents){
+      delay(10);
       component.drawComponent(this);
     }
   }

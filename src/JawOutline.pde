@@ -23,9 +23,9 @@ class JawOutline implements FaceComponent{
     int rightFaceX = f.headX + headRadius;
     int rightFaceY = f.headY;
     vertex(rightFaceX, rightFaceY);
-    fill(196, 164, 132);
+    fillLightBrown();
     endShape();
-    fill(255);
+    fillWhite();
   }
   
 }

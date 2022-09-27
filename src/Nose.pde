@@ -22,7 +22,7 @@ class Nose implements FaceComponent{
   }
   
   void drawNoseBody(){
-    fill(78,53,36);
+    fillDarkBrown();
     beginShape();
     
     vertex(noseX-noseOffset, noseY);
@@ -32,14 +32,13 @@ class Nose implements FaceComponent{
     vertex(noseX-noseOffset, noseY-30);
     
     endShape();
-    fill(255);
+    fillWhite();
   }
   
   void drawNostril(){
-    fill(78,53,36);
-    //drawLeftNostril();
+    fillDarkBrown();
     drawRightNostril();
-    fill(255);
+    fillWhite();
   }
   
   void drawLeftNostril(){

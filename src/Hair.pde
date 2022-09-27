@@ -47,11 +47,11 @@ class Hair implements FaceComponent{
   void drawHairGuide(){
     noFill();
     bezier(anchorLeftX, anchorLeftY, guideLeftX, guideLeftY, guideRightX, guideRightY, anchorRightX, anchorRightY);
-    fill(255);
+    fillWhite();
   }
   
   void drawHair(){
-    fill(0);
+    fillBlack();
     for(int i = 0; i<hairFollicles; i++){
       float randHairRadius = hairRadius*random(hairSizeLowerBound, hairSizeUpperBound);
       float locationAlongGuide = i/hairFollicles;
@@ -59,6 +59,6 @@ class Hair implements FaceComponent{
       float y = bezierPoint(anchorLeftY, guideLeftY, guideRightY, anchorRightY, locationAlongGuide)*random(hairPosLowerBound, hairPosUpperBound);
       ellipse(x, y, randHairRadius, randHairRadius);
     }
-    fill(255);
+    fillWhite();
   }
 }

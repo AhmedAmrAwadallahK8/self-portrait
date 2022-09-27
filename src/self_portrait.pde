@@ -9,10 +9,13 @@ void setup(){
   background(255);
   size(1000,800);
   randomSeed(10);
-  //img = loadImage("S3= -0.0058 S10= -0.01852 S16= 0.0799 S14= 0.0785 S22= 0.08139 C= 60000.0.png");
-  //image(img, 0, 0);
-  //size(400,500);
-  
   Face face = new Face();
+  
+  backgroundImage();
   face.drawFace();
+}
+
+void backgroundImage(){
+  img = loadImage("blackhole.png");
+  image(img, -75, 0);
 }

@@ -1,5 +1,5 @@
 class Eye implements FaceComponent{
-  String side;
+
   int widthEye;
   int heightEye;
   int radiusPupil;
@@ -9,82 +9,112 @@ class Eye implements FaceComponent{
   int centerEyeX;
   int centerEyeY;
   int irisOffsetX;
-  float leftBrowAngle;
-  float rightBrowAngle;
-  Eye(String side){
-    this.side = side;
-    leftBrowAngle = PI/3;
-    rightBrowAngle = 2*PI/3;
-  }
+  float leftEyeX;
+  float rightEyeX;
+  float eyeY;
+  float leftIrisX;
+  float rightIrisX;
+  float irisY;
+  float leftPupilX;
+  float rightPupilX;
+  float pupilY;
   
-  void drawComponent(Face f){
+  float widthBrow;
+  float heightBrow;
+  float leftBrowX;
+  float rightBrowX;
+  float browY;
+  
+  Eye(Face f){
     widthEye = f.headRadius/2;
     heightEye = f.headRadius/5;
     eyeOffsetX = f.headRadius/2;
     eyeOffsetY =  f.headRadius/3;
-    drawEye(f);
-    drawIris(f);
-    drawPupil(f);
-    drawEyebrow(f);
-  }
-  
-  void drawEye(Face f){
-    if(side == "left"){
-      ellipse(f.headX-eyeOffsetX, f.headY+eyeOffsetY, widthEye, heightEye);
-    }
-    else if(side == "right"){
-      ellipse(f.headX+eyeOffsetX, f.headY+eyeOffsetY, widthEye, heightEye);
-    }
-  }
-  
-  void drawIris(Face f){
+    leftEyeX = f.headX-eyeOffsetX;
+    rightEyeX = f.headX+eyeOffsetX;
+    eyeY = f.headY+eyeOffsetY;
     radiusIris = int(heightEye*.95);
     irisOffsetX = int(eyeOffsetX*0.95);
-    float red = 128;
-    float green = 64;
-    float blue = 0;
-    fill(red, green, blue);
-    
-    if(side == "left"){
-      ellipse(f.headX-irisOffsetX, f.headY+eyeOffsetY, radiusIris, radiusIris);
-    }
-    else if(side == "right"){
-      ellipse(f.headX+irisOffsetX, f.headY+eyeOffsetY, radiusIris, radiusIris);
-    }    
-    
-    fill(255);
-  }
-  
-  void drawPupil(Face f){
+    leftIrisX = f.headX-irisOffsetX;
+    rightIrisX = f.headX+irisOffsetX;
+    irisY = eyeY;
     radiusPupil = int(heightEye*.5);
-    
-    fill(0);
-    if(side == "left"){
-      ellipse(f.headX-irisOffsetX, f.headY+eyeOffsetY, radiusPupil, radiusPupil);
-    }
-    else if(side == "right"){
-      ellipse(f.headX+irisOffsetX, f.headY+eyeOffsetY, radiusPupil, radiusPupil);
-    } 
-    fill(255);
+    leftPupilX = leftIrisX;
+    rightPupilX = rightIrisX;
+    pupilY = eyeY;
+    leftBrowX = leftEyeX;
+    rightBrowX = rightEyeX;
+    browY = f.headY+eyeOffsetY*0.5;
+    widthBrow = widthEye*0.8;
+    heightBrow = heightEye*0.4;
   }
   
-  void drawEyebrow(Face f){
-    float widthBrow = widthEye*0.8;
-    float heightBrow = heightEye*0.4;
-    fill(0);
-    if(side == "left"){
-      //translate(f.headX-eyeOffsetX, f.headY+eyeOffsetY*0.5);
-      //rotate(leftBrowAngle);
-      //ellipse(0, 0, widthBrow, heightBrow);
-      //translate(-(f.headX-eyeOffsetX),-(f.headY+eyeOffsetY*0.5));
-      //rotate(-leftBrowAngle);
-      
-      ellipse(f.headX-eyeOffsetX, f.headY+eyeOffsetY*0.5, widthBrow, heightBrow);
-    }
-    else if(side == "right"){
-      ellipse(f.headX+eyeOffsetX, f.headY+eyeOffsetY*0.5, widthBrow, heightBrow);
-    }
-    //rotate(0);
-    fill(255);
+  void drawComponent(Face f){
+
+    drawEye();
+    drawIris();
+    drawPupil();
+    drawEyebrow();
+  }
+  
+  void drawEye(){
+    drawLeftEye();
+    drawRightEye();
+  }
+  
+  void drawLeftEye(){
+    ellipse(leftEyeX, eyeY, widthEye, heightEye);
+  }
+  
+  void drawRightEye(){
+    ellipse(rightEyeX, eyeY, widthEye, heightEye);
+  }
+  
+  void drawIris(){
+
+    fillBrown();
+    drawLeftIris();
+    drawRightIris();
+    fillWhite();
+  }
+  
+  void drawLeftIris(){
+    ellipse(leftIrisX, irisY, radiusIris, radiusIris);
+  }
+  
+  void drawRightIris(){
+    ellipse(rightIrisX, irisY, radiusIris, radiusIris);
+  }
+  
+  void drawPupil(){
+   
+    fillBlack();
+    drawLeftPupil();
+    drawRightPupil();
+    fillWhite();
+  }
+  
+  void drawLeftPupil(){
+    ellipse(leftPupilX, pupilY, radiusPupil, radiusPupil);
+  }
+  
+  void drawRightPupil(){
+    ellipse(rightPupilX, pupilY, radiusPupil, radiusPupil);
+  }
+  
+  void drawEyebrow(){
+    
+    fillBlack();
+    drawLeftEyebrow();
+    drawRightEyebrow();
+    fillWhite();
+  }
+  
+  void drawLeftEyebrow(){
+    ellipse(leftBrowX, browY, widthBrow, heightBrow);
+  }
+  
+  void drawRightEyebrow(){
+    ellipse(rightBrowX, browY, widthBrow, heightBrow);
   }
 }
